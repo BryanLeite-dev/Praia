@@ -1,0 +1,20 @@
+body {
+	min-height: 0vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+div{
+	margin-top:25px;
+}
+canvas {
+    border: 0.1px solid #000;
+    display: block;
+    margin: 0 auto;
+}
+#field{
+	float: relative;
+	margin-top:-163px;
+	border: none;
+}

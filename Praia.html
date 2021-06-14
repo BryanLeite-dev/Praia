@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="styleSheet" type="text/css" href="css/estilo.css"/>
+    <title>Save the Turtles</title>
+	</head>
+	<body>
+		<div><div>
+		<canvas id="janela do jogo" width="450" height="600">
+		
+			<script>
+				var desenhador = document.getElementById("janela do jogo").getContext("2d");
+				var fundo = new Image();
+				var personagem = new Image();
+				var gaivota = new Image();
+				var gaivota1 = new Image();
+				var gaivota2 = new Image();
+				var posicaoX = 0;
+				var posicaoY1 = 50;
+				var posicaoY2 = 50;
+				var posicaoY3 = 50;
+				var direcao = "nenhuma";
+				
+				
+				
+				function IniciaJogo (){
+					fundo.src = "Fundo.png";
+					personagem.src = "Garoto.png";
+					gaivota.src = "Gaivota.png";
+					gaivota1.src = "Gaivota.png";
+					gaivota2.src = "Gaivota.png";
+					window.addEventListener("keydown",ApertouTeclado);
+					window.addEventListener("keyup", SoltouTeclado);
+					DesenhaJogo();
+					
+				}
+				
+				function DesenhaJogo (){
+					x1 = posicaoX;
+					y1 = 225;
+					A1 = 100;
+					L1 = 100;
+					x2 = 15;
+					y2 = posicaoY1;
+					A2 = 75;
+					L2 = 75;
+					
+					
+					
+					requestAnimationFrame(DesenhaJogo);
+					desenhador.drawImage(fundo,0,-1,450,620);
+					if(direcao=="direita"){
+						posicaoX = posicaoX + 8;	
+					}
+					if(direcao=="esquerda"){
+						posicaoX = posicaoX - 8;	
+					}
+					desenhador.drawImage(personagem,posicaoX,y1,L1,A1);
+					
+					if(direcao=="cima1"){
+						posicaoY1 = posicaoY1 - 1;	
+					}
+					if(direcao=="baixo1"){
+						posicaoY1 = posicaoY1 + 1;	
+					}
+					desenhador.drawImage(gaivota,x2,posicaoY1,L2,A2);
+					if(direcao=="cima2"){
+						posicaoY2 = posicaoY2 - 1;	
+					}
+					if(direcao=="baixo2"){
+						posicaoY2 = posicaoY2 + 1;	
+					}
+					desenhador.drawImage(gaivota1,188,posicaoY2,75,75);
+					if(direcao=="cima3"){
+						posicaoY3 = posicaoY3 - 1;	
+					}
+					if(direcao=="baixo3"){
+						posicaoY3 = posicaoY3 + 1;	
+					}
+					desenhador.drawImage(gaivota2,365,posicaoY3,75,75);
+				}
+				
+				function ApertouTeclado(teclaApertada){
+					if(teclaApertada.keyCode==39){
+						direcao = "direita";
+					}
+					if(teclaApertada.keyCode==37){
+						direcao = "esquerda";
+					}
+					if(teclaApertada.keyCode==100){
+						direcao = "cima1";
+					}
+					if(teclaApertada.keyCode==97){
+						direcao = "baixo1";
+					}
+					if(teclaApertada.keyCode==101){
+						direcao = "cima2";
+					}
+					if(teclaApertada.keyCode==98){
+						direcao = "baixo2";
+					}
+					if(teclaApertada.keyCode==102){
+						direcao = "cima3";
+					}
+					if(teclaApertada.keyCode==99){
+						direcao = "baixo3";
+					}
+					
+					
+				}
+				
+				
+				function SoltouTeclado(){
+					direcao = "nenhuma";					
+				}
+				
+				
+				
+				IniciaJogo();
+				
+				
+				
+				
+			</script>
+			
+		</canvas>
+	
+		<canvas id="field" class="container" width="450" height="200"></canvas>
+		
+		<script type="text/javascript" src="js/star.js"></script>
+		<script type="text/javascript" src="js/starfield.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>
